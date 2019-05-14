@@ -1,0 +1,47 @@
+{% extends 'Dailyapp/base.html' %}
+<!DOCTYPE html>
+
+
+<html>
+<head>
+
+
+    <meta charset="UTF-8">
+    <title>DAILY APP</title>
+</head>
+<body>
+
+        {% block body %}
+
+                <div class="container">
+                    <h2> <strong><center>TODAY'S LIST</center></strong></h2>
+                    <marquee> <h3><strong> GET SHIT DONE.</strong> </h3></marquee>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th>Task Name</th>
+                            <th>Task Priority</th>
+                            <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if task_list %}
+                 {% for task in object_list %}
+                <tr class="active">
+                    <td><a href="{% url 'Dailyapp:detail' task.id %}">{{task.task_name}}</a></td>
+                    <td><b>{{task.task_priority}}</b></td>
+                    <td><button type="submit" class="btn btn-success"> DONE</button></td>
+                </tr>
+                {% endfor %}
+
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}
+
+
+
+
+</body>
+</html>
